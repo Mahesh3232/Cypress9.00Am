@@ -1,13 +1,24 @@
 
 
 describe('Verify contact us functionality',()=>{
-    it('Verify contactus functionality with valid credentials',()=>{
+    it('Click()- click on a function',()=>{
         cy.visit('https://webdriveruniversity.com/Contact-Us/contactus.html')
-        cy.get('input[name="first_name"]').type('Mahesh')
-        cy.get('input[name="last_name"]').type('Aher')
-        cy.get('input[name="email"]').type('Mahesh@gmail.com')
-        cy.get('textarea[name="message"]').type('I am learning js')
-        cy.get('input[type="submit"]').click()
+        cy.get('[name="first_name"]').type('Mahesh')
+        cy.get('[name="last_name"]').type('Aher')
+        cy.get('[name="email"]').type('mahesh@gmail.com')
+        cy.get('[name="message"]').type('I am learning cypress')
+        cy.get('[type="submit"]').click()
         cy.get('h1').should('have.text','Thank You for your Message!')
+        cy.get('h1').should('exist')
+        cy.contains('Thank You for your Message!').should('be.visible')
+    })
+
+    it('Clear()- clearing the input field',()=>{
+        cy.visit('https://webdriveruniversity.com/Contact-Us/contactus.html')
+        cy.get('[name="first_name"]').type('Mahesh')
+        cy.get('[name="last_name"]').type('Aher')
+        cy.get('[name="email"]').type('mahesh@gmail.com')
+        cy.get('[name="first_name"]').clear()
+        //cy.get('[name="first_name"]').should('have.text','')
     })
 })
